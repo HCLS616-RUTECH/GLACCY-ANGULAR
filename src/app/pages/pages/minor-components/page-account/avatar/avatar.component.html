@@ -1,0 +1,6 @@
+<div *ngIf="fullImgPath; else loading">
+  <img [src]="fullImgPath" alt="2">
+</div>
+<ng-template #loading>
+  <img src="assets/img/loading.png" alt="#">
+</ng-template>

@@ -1,0 +1,63 @@
+.bar {
+  &__ul {
+    display: flex;
+    justify-content: flex-start;
+  }
+  &__li {
+    margin-left: 2%;
+    padding: 2% 2%;
+    & a {
+      color: inherit;
+      cursor: pointer;
+      border-bottom: 1px solid #a9bbb1;
+    }
+    &:hover {
+      background-color: #f7f6f3;
+      color: #323232;
+      font-weight: 700;
+      border-radius: 12px;
+      transition: all 0.2s ease;
+    }
+    &:hover a {
+      border: none;
+    }
+  }
+  &__catalog {
+    margin-left: 4%;
+  }
+  &__catalog:hover .bar__list {
+    display: block;
+  }
+  &__list {
+    display: none;
+    position: absolute;
+    margin-left: -1.5%;
+    margin-top: 1%;
+    background: #f8f7f4;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: all 0.05s ease;
+    box-sizing: content-box;
+    & li {
+      box-sizing: content-box;
+      padding: 8% 15%;
+      font-weight: 500;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      margin-left: -9%;
+      margin-top: -20%;
+      height: 20px;
+      width: 100%;
+      background: transparent;
+    }
+    :first-child {
+      border-bottom: 1px solid #a9bbb1;
+    }
+    :nth-child(n + 2):hover {
+      background-color: #fbded7;
+      transition: all 0.2s ease;
+    }
+  }
+}

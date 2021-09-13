@@ -1,0 +1,29 @@
+<p>page-emailnotify works!</p>
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <div>
+    <label for="emailnotify">Введите адрес электронной почты для сброса пароля:</label>
+    <input
+      id="emailnotify"
+      type="email"
+      name="email"
+      placeholder="email@example.com"
+      formControlName="email">
+    <div
+      *ngIf="form.get('email').touched && form.get('email').invalid"
+    >
+      <small *ngIf="form.get('email').errors.required">
+        Введите поле Email.
+      </small>
+      <small *ngIf="form.get('email').errors.email">
+        Некорректный Email.
+      </small>
+    </div>
+  </div>
+  <button
+    type="submit"
+    [disabled]="form.invalid || submitted"
+  >Отправить</button>
+</form>
+<div *ngIf="message">
+  {{message}}
+</div>

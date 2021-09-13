@@ -1,0 +1,10 @@
+<div *ngIf="productCards$ | async as cards; else loading">
+  <app-product-card
+  *ngFor="let card of cards"
+  [card]="card"
+  ></app-product-card>
+</div>
+
+<ng-template #loading>
+  <p>Идет загрузка...</p>
+</ng-template>

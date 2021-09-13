@@ -1,0 +1,113 @@
+<p>page-login works!</p>
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <div>
+    <label for="avatar">Прикрепите аватар:</label>
+    <input
+      id="avatar"
+      type="file"
+      name="avatar"
+      formControlName="avatar"
+      (change)="onFileChange($event)">
+  </div>
+  <div>
+    <label for="nickname">Введите Ваше имя:*</label>
+    <input
+      id="nickname"
+      type="text"
+      name="nickname"
+      placeholder="Альберт Альбертович"
+      formControlName="nickname">
+    <div
+      *ngIf="form.get('nickname').touched && form.get('nickname').invalid"
+    >
+      <small *ngIf="form.get('nickname').errors.required">
+        Обязательное поле.
+      </small>
+      <small *ngIf="form.get('nickname').errors.minlength">
+        Имя должно быть не менее {{form.get('nickname').errors.minlength.requiredLength}} символов. Сейчас его длина:
+        {{form.get('nickname').errors.minlength.actualLength}}.
+      </small>
+    </div>
+  </div>
+  <div>
+    <label for="birthDate">Введите Ваш возраст:</label>
+    <input
+      id="birthDate"
+      type="date"
+      name="birthDate"
+      placeholder="00.00.0000"
+      formControlName="birthDate">
+<!--    <div-->
+<!--      *ngIf="form.get('birthDate').invalid"-->
+<!--    >-->
+<!--      <small *ngIf="form.get('birthDate').errors.minlength || form.get('birthDate').errors.maxLength">-->
+<!--        Имя должно быть не менее и не более {{form.get('birthDate').errors.minlength.requiredLength}} символов. Сейчас его длина: {{form.get('birthDate').errors.minlength.actualLength}}.-->
+<!--      </small>-->
+<!--    </div>-->
+  </div>
+  <div>
+    <label for="phoneNumber">Введите Ваш контактный номер:</label>
+    <input
+      id="phoneNumber"
+      type="text"
+      name="phoneNumber"
+      placeholder="00000000000"
+      formControlName="phoneNumber">
+<!--    <div-->
+<!--      *ngIf="form.get('nickname').touched && form.get('nickname').invalid"-->
+<!--    >-->
+<!--      <small *ngIf="form.get('nickname').errors.required">-->
+<!--        Обязательное поле.-->
+<!--      </small>-->
+<!--      <small *ngIf="form.get('nickname').errors.minlength && form.get('nickname').errors.maxLength">-->
+<!--        Имя должно быть не менее и не более {{form.get('nickname').errors.minlength.requiredLength}} символов. Сейчас его длина: {{form.get('nickname').errors.minlength.actualLength}}.-->
+<!--      </small>-->
+<!--    </div>-->
+  </div>
+  <div>
+    <label for="emailregistration">Введите адрес электронной почты:*</label>
+    <input
+      id="emailregistration"
+      type="email"
+      name="email"
+      placeholder="email@example.com"
+      formControlName="email">
+    <div
+      *ngIf="form.get('email').touched && form.get('email').invalid"
+    >
+      <small *ngIf="form.get('email').errors.required">
+        Введите поле Email.
+      </small>
+      <small *ngIf="form.get('email').errors.email">
+        Некорректный Email.
+      </small>
+    </div>
+  </div>
+  <div>
+    <label for="passwordregistration">Введите пароль:*</label>
+    <input
+      id="passwordregistration"
+      type="password"
+      name="password"
+      placeholder="••••••••"
+      formControlName="password">
+    <div
+      *ngIf="form.get('password').touched && form.get('password').invalid"
+    >
+      <small *ngIf="form.get('password').errors.required">
+        Введите пароль.
+      </small>
+      <small *ngIf="form.get('password').errors.minlength">
+        Пароль должен быть не менее {{form.get('password').errors.minlength.requiredLength}} символов. Сейчас его длина:
+        {{form.get('password').errors.minlength.actualLength}}.
+      </small>
+    </div>
+  </div>
+  <button
+    type="submit"
+    [disabled]="form.invalid || submitted"
+  >Отправить</button>
+</form>
+<div *ngIf="message">
+  {{message}}
+</div>

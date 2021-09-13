@@ -1,0 +1,21 @@
+<p>page-account works!</p>
+<div *ngIf="user$ | async as user; else loading">
+  <div *ngIf="user.avatar; else noAvatar">
+    <app-avatar [user]="user"></app-avatar>
+  </div>
+  <ng-template #noAvatar>
+    <p>Аватара нет.</p>
+  </ng-template>
+  <p>Название файла: {{user.avatar}}</p>
+  <p>Дата рождения: {{user.birthDate}}</p>
+  <p>Никнейм: {{user.nickname}}</p>
+  <p>Номер телефона: {{user.phoneNumber}}</p>
+  <p>Дата регистрации: {{user.registrationDate | date:'medium':null: 'ru'}}</p>
+  <p>UID: {{user.userUID}}</p>
+  <p>{{user.purchases}}</p>
+  <p>{{user.views}}</p>
+</div>
+
+<ng-template #loading>
+  <p>Идет загрузка...</p>
+</ng-template>

@@ -1,0 +1,14 @@
+<div>
+  <p>ID Товара: {{card.id}}</p>
+  <p>Стоимость: {{card.cost}}</p>
+  <p>Название: {{card.title}}</p>
+  <p>Жирность: {{card.fatContent}}</p>
+  <p>Путь к картинке: {{card.imgPath}}</p>
+  <div *ngIf="fullImgPath; else loading">
+    <img [src]="fullImgPath" alt="2">
+  </div>
+  <ng-template #loading>
+    <img src="assets/img/loading.png" alt="#">
+  </ng-template>
+  <hr>
+</div>
